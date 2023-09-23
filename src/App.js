@@ -1,12 +1,24 @@
-import React from 'react';
-import Tweeting from './tweet';
+import React from "react";
+import './App.css';
+import Sidebar from "./components/views/Sidebar";
+import Feed from "./components/views/Feed";
+import Widgets from "./components/views/Widgets";
 
-const App = () => {
+function App() {
+  return (
+    //BEM convention
+    <div className="App">
+       
+     {/*Sidebar */}
+       <Sidebar/>
 
-  return(
-    <Tweeting/>
-  )
+       {/*Feed */}
+       <Feed/>
+
+        {/*Widgets*/}
+        <Widgets/>
+       </div>
+  );
 }
-  
 
 export default App;

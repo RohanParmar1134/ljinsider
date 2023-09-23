@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+* {
+  margin: 0;
 }
+body {
+  color: white;
+  background-color:  #141617;
+  --twitter-color: rgb(16, 168, 168);
+  --twitter-background: #141617;
+}
+.App {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+

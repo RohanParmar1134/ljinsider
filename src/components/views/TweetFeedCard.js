@@ -1,6 +1,6 @@
 import React from 'react';
-import './TweetFeedCard.css';
-import lj from './lj2.png';
+import '../css/TweetFeedCard.css'
+import lj from '../../assets/lj2.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
