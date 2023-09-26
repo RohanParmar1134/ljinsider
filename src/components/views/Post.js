@@ -18,17 +18,16 @@ function Post({
 }) {
   return (
     <div className="post">
-      <div className="post_avatar">
-        <Avatar src={avatar} />
+      <div className="post__avatar">
+        <img src={avatar} className="img" alt=''/>
       </div>
       <div className="post__body">
         <div className="post__header">
           <div className="post__headerText">
             <h3>
-              {displayName}{" "}
+              @{displayName}{" "}
               <span className="post_headerSpecial">
                 {verified && <VerifiedUserIcon className="post__badge" />}
-                @{username}
               </span>
             </h3>
           </div>

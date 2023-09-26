@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent, Button, Typography } from "@mui/material";
 import { Google } from "@mui/icons-material";
 import "../css/auth.css";
+import {auth,provider} from "../../database/firebase"
 
 export default function Auth() {
   // Define a style object for the card
@@ -33,13 +34,17 @@ export default function Auth() {
     fontFamily: "Arial, sans-serif", // Specify the font family
   };
 
+
+  const signin = () => {
+    auth.signInWithPopup(provider).catch(alert);
+    }
   return (
     <Card style={cardStyle}>
       <CardContent>
         <Typography variant="h4" style={titleStyle}>
           LJ Insider's
         </Typography>
-        <Button variant="contained" style={buttonStyle}>
+        <Button variant="contained" onClick={signin} style={buttonStyle}>
           <Google />
         </Button>
       </CardContent>

@@ -1,5 +1,5 @@
 import {React,useState} from 'react'
-import { CloseRounded } from '@mui/icons-material';
+import { CloseRounded, Http, Logout } from '@mui/icons-material';
 import '../css/Sidebar.css'
 import SidebarOption from './SidebarOption'
 import HomeIcon from "@mui/icons-material/Home";
@@ -7,10 +7,12 @@ import { Button } from '@mui/material';
 import img from "../../assets/lj2.png"
 import { ContactMail } from '@mui/icons-material';
 import firestore from "../../database/firebase"
-
+import {auth} from "../../database/firebase"
+import {useAuthState} from 'react-firebase-hooks/auth';
 
 
 function Sidebar() {
+    const [user] = useAuthState(auth);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [newItem, setNewItem] = useState("");
     const [newuname, setNewUname] = useState("");
@@ -26,7 +28,7 @@ function Sidebar() {
 
     const handleAdd = async (e) => {
         // e.preventDefault();
-        await firestore.collection("items").doc(newItem).set({ name: newItem, username: newuname, desc: newDesc, date: formattedDate });
+        await firestore.collection("confess").add({ name: user.displayName,email:user.email, desc: newDesc, date: formattedDate,img:user.photoURL});
         setNewItem("");
         setNewDesc("");
         setNewUname("")
@@ -40,7 +42,9 @@ function Sidebar() {
         setIsModalOpen(false);
     };
 
-
+    const logout = () => {
+        auth.signOut();
+    }
     return (
         <div className="sidebar">
            
@@ -51,11 +55,12 @@ function Sidebar() {
             {/*SIDEBAROPTION */}
     
             <SidebarOption active Icon={HomeIcon} text="Home" link="/"/>
-      <SidebarOption Icon={ContactMail} text="Feedback" link="explore"/>
+            <SidebarOption Icon={ContactMail} text="Feedback" link="explore"/>
            
        {/*button -> tweet */}
+       <Button variant="outlined" className="sidebar__logout" fullWidth onClick={logout}>Logout</Button>
        <Button variant="outlined" className="sidebar__tweet" fullWidth onClick={openModal} >
-                Tweet
+                Confess
             </Button>
 
      {isModalOpen && (
@@ -70,7 +75,9 @@ function Sidebar() {
                                     Name:<input type="text" value={newItem} onChange={(e) => setNewItem(e.target.value)} required/>
                                 </label> */}
                                 <label>
-                                    Description:<input type="text" value={newDesc} onChange={(e) => setNewDesc(e.target.value)} required/>
+                                    {/* Description:<input type="" value={newDesc} onChange={(e) => setNewDesc(e.target.value)} required/> */}
+                                    Description:<textarea value={newDesc} onChange={(e) => setNewDesc(e.target.value)} required></textarea>
+
                                 </label>
                                 <button type="submit" onClick={handleAdd}>
                                     Add

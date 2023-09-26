@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import "../css/Feed.css"
 import Post from './Post'
 import firestore from "../../database/firebase"
+import {auth} from "../../database/firebase"
+import {useAuthState} from 'react-firebase-hooks/auth';
 // import TweetBox from "./TweetBox.js"
 
 
 function Feed() {
+    const [user] = useAuthState(auth);
     const [items, setItems] = useState([]);
 
     {/*}
@@ -17,7 +20,7 @@ function Feed() {
         ))
     },[])*/}
     const getItems = async () => {
-        const itemsRef = await firestore.collection("items").get();
+        const itemsRef = await firestore.collection("confess").get();
         const itemsData = itemsRef.docs.map((doc) => [doc.data(), doc.id]);
         console.log(itemsData);
         setItems(itemsData);
@@ -47,10 +50,10 @@ function Feed() {
                 <Post
                     key={tweet[1]}
                     displayName={tweet[0].name}
-                    username={tweet[0].username}
                     verified={true}
                     text={tweet[0].desc}
                     timestamp={tweet[0].date}
+                    avatar={tweet[0].img}
                 // onDelete={() => handleDelete(tweet[1])}
                 />
             ))}
