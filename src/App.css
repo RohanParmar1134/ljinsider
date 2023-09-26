@@ -41,8 +41,10 @@
   margin: 0;
 }
 body {
-  color: white;
-  background-color:  #141617;
+   color: white;
+  background-color:  #141617; 
+  /* background: rgb(176,238,174);
+background: radial-gradient(circle, rgba(176,238,174,1) 0%, rgba(135,172,217,1) 100%); */
   --twitter-color: rgb(16, 168, 168);
   --twitter-background: #141617;
 }

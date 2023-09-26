@@ -41,10 +41,12 @@ function Post({
         </div>
         <img src={image} alt="" />
         <div className="post__footer">
-          <ChatBubbleOutLineIcon fontSize="small" />
-          <ReapeatIcon fontSize="small" />
+          <button style={{backgroundColor:"teal"}}>
+          <ChatBubbleOutLineIcon fontSize="small"/>
+          </button>
+          <button style={{backgroundColor:"teal"}}>
           <FavouriteIcon fontSize="small" />
-          <PublishIcon fontSize="small" />
+          </button>
         </div>
       </div>
     </div>

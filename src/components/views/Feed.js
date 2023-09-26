@@ -32,12 +32,12 @@ function Feed() {
         <div className="feed">
             {/*header */}
             <div className="feed__header">
-                <h2>this is header</h2>
+                <h2>LJ Insider's</h2>
             </div>
 
 
             {/*tweetbox */}
-            <h2>this is tweetbox</h2>
+            {/* <h2>this is tweetbox</h2> */}
             {/* <TweetBox /> */}
 
 
