@@ -20,10 +20,20 @@ function Feed() {
         ))
     },[])*/}
     const getItems = async () => {
-        const itemsRef = await firestore.collection("confess").get();
-        const itemsData = itemsRef.docs.map((doc) => [doc.data(), doc.id]);
-        console.log(itemsData);
-        setItems(itemsData);
+        // const itemsRef = await firestore.collection("confess").get();
+        // const itemsData = itemsRef.docs.map((doc) => [doc.data(), doc.id]);
+        // console.log(itemsData);
+        // setItems(itemsData);
+        firestore.collection('confess').onSnapshot(function (querySnapshot) {
+            const data= [];
+            querySnapshot.forEach( doc => {
+              console.log("Name : ", doc.data().name);
+              console.log("Valeur : ", doc.data().desc);
+              data.push({name : doc.data().name, desc: doc.data().desc,date:doc.data().date,img:doc.data().img,like:doc.data().like,likestatus:doc.data().likestatus,time:doc.data().time,comment:doc.data().comment,uid:doc.id})
+            })
+            setItems(data);
+          })
+      
     };
 
     useEffect(() => {
@@ -48,16 +58,16 @@ function Feed() {
 
             {items.map((tweet, index) => (
                 <Post
-                    uid={tweet[1]}
-                    displayName={tweet[0].name}
+                    uid={tweet.uid}
+                    displayName={tweet.name}
                     verified={true}
-                    text={tweet[0].desc}
-                    timestamp={tweet[0].date}
-                    avatar={tweet[0].img}
-                    like={tweet[0].like}
-                    likestatus={tweet[0].likestatus}
-                    time={tweet[0].time}
-                    comment={tweet[0].comment}
+                    text={tweet.desc}
+                    timestamp={tweet.date}
+                    avatar={tweet.img}
+                    like={tweet.like}
+                    likestatus={tweet.likestatus}
+                    time={tweet.time}
+                    comment={tweet.comment}
                 // onDelete={() => handleDelete(tweet[1])}
                 />
             ))}
@@ -70,6 +80,7 @@ function Feed() {
          image="https://media3.giphy.com/media/65ATdpi3clAdjomZ39/giphy.gif"
          
          />         */}
+         
         </div>
     )
 }
