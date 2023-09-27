@@ -70,17 +70,7 @@ function Feed() {
                     comment={tweet.comment}
                 // onDelete={() => handleDelete(tweet[1])}
                 />
-            ))}
-            {/* <Post 
-         displayName="fenil faldu"
-         username="fenil_faldu"
-         verified={true}
-         text="too it working"
-         avatar=""
-         image="https://media3.giphy.com/media/65ATdpi3clAdjomZ39/giphy.gif"
-         
-         />         */}
-         
+            ))}         
         </div>
     )
 }

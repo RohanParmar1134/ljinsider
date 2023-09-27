@@ -27,8 +27,10 @@ function Sidebar() {
     });
 
     const handleAdd = async (e) => {
-        // e.preventDefault();
-        await firestore.collection("confess").add({uid:user.uid, name: user.displayName,email:user.email, desc: newDesc, date: formattedDate,img:user.photoURL,like:0,likestatus:false,comment:[],time: new Date().getTime().toLocaleString()});
+        e.preventDefault();
+        await firestore.collection("confess").add({uid:user.uid, name: user.displayName,email:user.email, desc: newDesc, date: formattedDate,img:user.photoURL,like:0,likestatus:false,comment:[],time: new Date().getTime().toLocaleString()}).then(()=>{
+            closeModal()
+        });
         setNewItem("");
         setNewDesc("");
         setNewUname("")
@@ -57,7 +59,7 @@ function Sidebar() {
             {/*SIDEBAROPTION */}
     
             <SidebarOption active Icon={HomeIcon} text="Home" link="/"/>
-            <SidebarOption Icon={ContactMail} text="Feedback" link="explore"/>
+            <SidebarOption Icon={ContactMail} text="Feedback" link="/"/>
            
        {/*button -> tweet */}
        <Button variant="outlined" className="sidebar__logout" fullWidth onClick={logout}>Logout</Button>
@@ -70,12 +72,6 @@ function Sidebar() {
                     <div className="modal">
                         <div className="modal__content">
                             <form className="modal__form">
-                                {/* <label>
-                                    UserName:<input type="text" value={newuname} onChange={(e) => setNewUname(e.target.value)} required/>
-                                </label>
-                                <label>
-                                    Name:<input type="text" value={newItem} onChange={(e) => setNewItem(e.target.value)} required/>
-                                </label> */}
                                 <label>
                                     {/* Description:<input type="" value={newDesc} onChange={(e) => setNewDesc(e.target.value)} required/> */}
                                     Description:<textarea value={newDesc} onChange={(e) => setNewDesc(e.target.value)} required></textarea>
@@ -92,29 +88,7 @@ function Sidebar() {
                     </div>
                 </div>
             )}
- 
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
-
-
-
-            
-              
-    
-
-
-        
     )
 }
 

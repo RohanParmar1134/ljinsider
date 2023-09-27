@@ -38,6 +38,7 @@ export default function Auth() {
   const signin = () => {
     auth.signInWithPopup(provider).catch(alert);
     }
+    
   return (
     <Card style={cardStyle}>
       <CardContent>

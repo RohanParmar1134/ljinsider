@@ -15,10 +15,12 @@ function Widgets() {
              <input placeholder="Search Post" type="text"/>
         </div> 
         <div className="widgets__widgetContainer">
-        <img src={user.photoURL}/>
+        <img src={user.photoURL} style={{borderRadius:"10px"}}/>
         <h1>
             Welcome! {user.displayName}
             </h1>
+            <br></br>
+            <h4>Email:   {user.email}</h4>
          </div>
         </div>
     )

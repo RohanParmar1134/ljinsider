@@ -61,7 +61,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 
   const unlike=async()=>{
-    await firestore.collection("confess").doc(uid).set({like:like-1,likestatus:false})
+    await firestore.collection("confess").doc(uid).update({like:like-1,likestatus:false})
   }
   return (
     <div className="post">
