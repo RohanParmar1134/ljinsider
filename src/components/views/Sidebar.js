@@ -28,7 +28,7 @@ function Sidebar() {
 
     const handleAdd = async (e) => {
         // e.preventDefault();
-        await firestore.collection("confess").add({ name: user.displayName,email:user.email, desc: newDesc, date: formattedDate,img:user.photoURL});
+        await firestore.collection("confess").add({uid:user.uid, name: user.displayName,email:user.email, desc: newDesc, date: formattedDate,img:user.photoURL,like:0,likestatus:false,comment:[],time: new Date().getTime().toLocaleString()});
         setNewItem("");
         setNewDesc("");
         setNewUname("")
@@ -49,8 +49,10 @@ function Sidebar() {
         <div className="sidebar">
            
             {/*Twitter icon */}
+           <div style={{display:"flex",justifyContent:"space-around"}}>
            <img style={{maxWidth:"20%", paddingLeft:"30px"}} src={img}/>
-           
+           <h2>LJ Insider's</h2>
+           </div>
             
             {/*SIDEBAROPTION */}
     

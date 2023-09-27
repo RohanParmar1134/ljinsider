@@ -35,7 +35,7 @@ function Feed() {
         <div className="feed">
             {/*header */}
             <div className="feed__header">
-                <h2>LJ Insider's</h2>
+                {/* <h2>LJ Insider's</h2> */}
             </div>
 
 
@@ -48,12 +48,16 @@ function Feed() {
 
             {items.map((tweet, index) => (
                 <Post
-                    key={tweet[1]}
+                    uid={tweet[1]}
                     displayName={tweet[0].name}
                     verified={true}
                     text={tweet[0].desc}
                     timestamp={tweet[0].date}
                     avatar={tweet[0].img}
+                    like={tweet[0].like}
+                    likestatus={tweet[0].likestatus}
+                    time={tweet[0].time}
+                    comment={tweet[0].comment}
                 // onDelete={() => handleDelete(tweet[1])}
                 />
             ))}
