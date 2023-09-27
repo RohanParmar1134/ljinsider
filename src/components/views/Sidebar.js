@@ -62,7 +62,7 @@ function Sidebar() {
        {/*button -> tweet */}
        <Button variant="outlined" className="sidebar__logout" fullWidth onClick={logout}>Logout</Button>
        <Button variant="outlined" className="sidebar__tweet" fullWidth onClick={openModal} >
-                Confess
+                Post
             </Button>
 
      {isModalOpen && (
