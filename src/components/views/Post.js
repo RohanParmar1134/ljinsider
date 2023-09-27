@@ -47,7 +47,7 @@ const closeModal = () => {
 };
 const handleAdd = async (e) => {
   // e.preventDefault();
-  await firestore.collection("confess").doc(uid).update({comment:[{"desc":newDesc}]})
+  await firestore.collection("confess").doc(uid).update({comment:[{name:displayName ,"desc":newDesc}]})
   setNewItem("");
   setNewDesc("");
   setNewUname("")
@@ -83,6 +83,18 @@ const formattedDate = date.toLocaleDateString('en-US', {
           </div>
           <div className="post__date">
             <p>{timestamp}</p>
+          </div>
+          <div className='comment'>Comments: 
+              {
+                comment.map((i)=>{
+                    return(
+                      <>
+                      <p>@{i.name}</p> 
+                      <p>{i.desc}</p> 
+                      </>
+                    ) 
+                })
+              }
           </div>
         </div>
         <div className="post__footer">
