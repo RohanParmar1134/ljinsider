@@ -1,2 +1,3 @@
 # ljinsider
-Twitter
+Twitter for LJ university
+
